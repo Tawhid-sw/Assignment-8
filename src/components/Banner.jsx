@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { TextContent } from "../contents/GlobalContext";
 import { useLocation } from "react-router-dom";
 
