@@ -1,0 +1,27 @@
+/* === Goole Font ( Quicksand ) === */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+/* === Goole Font ( "Inter", sans-serif ) === */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fx-row {
+  @apply flex items-center;
+}
+img {
+  @apply max-w-full block;
+}
+.w-btn {
+  @apply relative p-2 justify-center text-lg text-black transition-all bg-white rounded-full fx-row active:scale-90 hover:opacity-90;
+}
+.w-btn::before {
+  @apply absolute w-5 h-5 text-white font-medium text-[0.66rem] bg-red-500 -top-1 -right-[0.6rem] flex items-center justify-center rounded-full shadow-md;
+}
+
+nav {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
