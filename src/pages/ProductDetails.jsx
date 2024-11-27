@@ -1,5 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { ProductDetail, TextContent } from "../contents/GlobalContext";
+import {
+  ProductDetail,
+  TextContent,
+  CartItem,
+} from "../contents/GlobalContext";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
@@ -7,6 +11,7 @@ import { FaRegHeart } from "react-icons/fa";
 const ProductDetails = () => {
   const { setText } = useContext(TextContent);
   const { productDetails } = useContext(ProductDetail);
+  const { AddItemToCart } = useContext(CartItem);
   useEffect(() => {
     document.title = "Gadget Heaven || Product Details";
     setText("Product Details");
@@ -31,12 +36,12 @@ const ProductDetails = () => {
             {productDetails.product_title}
           </h1>
           <p className="text-lg font-semibold text-gray-800 ">
-            Price : {productDetails.price}
+            Price : ${productDetails.price}
           </p>
 
           <span
             className={`text-sm font-bold px-3 py-1 ${
-              productDetails.availability == true ? "bg-prime" : "bg-red-400"
+              productDetails.availability == true ? "bg-prime" : "bg-red-600"
             }  text-white rounded-3xl`}
           >
             {productDetails.availability == true ? "In Stock" : "Out of Stock"}
@@ -63,7 +68,12 @@ const ProductDetails = () => {
             {productDetails.rating}
           </span>
           <div className="flex items-center gap-4 ">
-            <button className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white transition-all rounded-3xl bg-prime hover:opacity-95 active:scale-90">
+            <button
+              onClick={() => {
+                AddItemToCart(productDetails);
+              }}
+              className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white transition-all rounded-3xl bg-prime hover:opacity-95 active:scale-90"
+            >
               Add to cart <MdOutlineShoppingCart />
             </button>
             <button className="p-2 text-lg border border-[#00000059] rounded-full transition-all active:scale-90 hover:bg-red-400 hover:text-white hover:border-white">

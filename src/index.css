@@ -25,3 +25,9 @@ nav {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
+.DisplayBtns {
+  @apply px-8 py-2 text-sm font-bold font-Inter border border-white rounded-3xl  transition-all hover:opacity-95 active:scale-90 duration-200;
+}
+.tr-drop {
+  @apply transition-all duration-200 active:scale-90;
+}

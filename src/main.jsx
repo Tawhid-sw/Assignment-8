@@ -7,13 +7,19 @@ import {
   GlobalBannerText,
   SelectCategories,
   ProductDetailsContext,
+  CartItems,
+  Displayed,
 } from "./contents/GlobalContext";
 
 createRoot(document.getElementById("root")).render(
   <SelectCategories>
     <GlobalBannerText>
       <ProductDetailsContext>
-        <RouterProvider router={router} />
+        <CartItems>
+          <Displayed>
+            <RouterProvider router={router} />
+          </Displayed>
+        </CartItems>
       </ProductDetailsContext>
     </GlobalBannerText>
   </SelectCategories>

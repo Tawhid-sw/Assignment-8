@@ -7,7 +7,7 @@ const Products = () => {
   const { categories } = useContext(Categories);
   const { setProductDetails } = useContext(ProductDetail);
   const [Product, setProducts] = useState([]);
-  const URL = `https://raw.githubusercontent.com/Tawhid-sw/API/674b3ca5fe96e8f951ceff3ac766f9107023e212/Gadget%20Haven%20Fake%20Data%20API.json`;
+  const URL = `https://raw.githubusercontent.com/Tawhid-sw/API/refs/heads/main/Gadget%20Haven%20Fake%20Data%20API.json`;
 
   const Productz = async () => {
     try {
@@ -48,7 +48,7 @@ const Products = () => {
             <h2 className="text-lg font-bold text-black font-Quicksand">
               {product.product_title}
             </h2>
-            <p className="text-sm text-gray-500">Price : {product.price}</p>
+            <p className="text-sm text-gray-500">Price : ${product.price}</p>
             <Link to={"/product-details"}>
               <button
                 onClick={() => {
