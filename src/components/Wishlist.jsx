@@ -5,7 +5,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 const Wishlist = () => {
   const { wishlistItem, removeItem } = useContext(Wishlists);
-  const { AddItemToCart } = useContext(CartItem);
+  const { AddItemToCart, cartItem } = useContext(CartItem);
   return (
     <>
       <h1 className="text-2xl font-bold text-gray-800 font-Quicksand">
@@ -35,9 +35,17 @@ const Wishlist = () => {
                 </p>
                 <button
                   onClick={() => {
-                    AddItemToCart(item);
-                    {
-                      item.availability && removeItem(item.product_id);
+                    if (!item.availability) {
+                      alert("Product is out of stock");
+                    } else if (
+                      cartItem.find(
+                        (items) => items.product_id === item.product_id
+                      )
+                    ) {
+                      alert("already in cart");
+                    } else {
+                      removeItem(item.product_id);
+                      AddItemToCart(item);
                     }
                   }}
                   className="gap-1 mt-2 px-2 py-1 text-[0.678rem] font-semibold text-white fx-row rounded-3xl bg-prime font-Quicksand tr-drop hover:opacity-85"

@@ -92,10 +92,7 @@ export const WishlistItems = ({ children }) => {
   }, [wishlistItem]);
 
   const getItem = (newItem) => {
-    const ifItemExist = wishlistItem.find(
-      (item) => item.product_id === newItem.product_id
-    );
-    ifItemExist ? "Already added" : setWishlistItem([...wishlistItem, newItem]);
+    setWishlistItem([...wishlistItem, newItem]);
   };
 
   const removeItem = (id) => {

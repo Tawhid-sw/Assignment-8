@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navigation } from "../contents/Navigation";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa6";
+import { CartItem, Wishlists, Display } from "../contents/GlobalContext";
 
 const Header = () => {
+  const { cartItem } = useContext(CartItem);
+  const { wishlistItem } = useContext(Wishlists);
+  const { setDisplay } = useContext(Display);
+  const navigate = useNavigate();
+  const [CartLengt, setCartLengt] = useState(() => {
+    const length = localStorage.getItem("cartItemLength");
+    return length ? JSON.parse(length) : 0;
+  });
+  useEffect(() => {
+    localStorage.setItem("cartItemLength", JSON.parse(CartLengt));
+    setCartLengt(cartItem.length);
+  }, [cartItem]);
+
+  const [WishlistLength, setWishlistLength] = useState(() => {
+    const lengths = localStorage.getItem("wishlistLength");
+    return lengths ? JSON.parse(lengths) : 0;
+  });
+  useEffect(() => {
+    localStorage.setItem("wishlistLength", JSON.parse(WishlistLength));
+    setWishlistLength(wishlistItem.length);
+  }, [wishlistItem]);
+
   const location = useLocation();
   return (
     <header
@@ -43,10 +66,24 @@ const Header = () => {
           })}
         </ul>
         <div className="gap-4 fx-row">
-          <button className="w-btn before:content-['0']">
+          <button
+            onClick={() => {
+              navigate("/dashbord");
+              setDisplay("cart");
+            }}
+            className="w-btn"
+          >
+            <span>{CartLengt}</span>
             <BsCart3 />
           </button>
-          <button className="w-btn before:content-['0']">
+          <button
+            onClick={() => {
+              navigate("/dashbord");
+              setDisplay("wishlist");
+            }}
+            className="w-btn "
+          >
+            <span>{WishlistLength}</span>
             <FaRegHeart />
           </button>
         </div>

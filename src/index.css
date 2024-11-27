@@ -17,7 +17,7 @@ img {
 .w-btn {
   @apply relative p-2 justify-center text-lg text-black transition-all bg-white rounded-full fx-row active:scale-90 hover:opacity-90;
 }
-.w-btn::before {
+.w-btn > span {
   @apply absolute w-5 h-5 text-white font-medium text-[0.66rem] bg-red-500 -top-1 -right-[0.6rem] flex items-center justify-center rounded-full shadow-md;
 }
 

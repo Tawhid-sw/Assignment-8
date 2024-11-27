@@ -6,9 +6,6 @@ import Wishlist from "../components/Wishlist";
 const Dashbord = () => {
   const { setText } = useContext(TextContent);
   const { display } = useContext(Display);
-  const PaymentState = (state) => {
-    setPaymentState(state);
-  };
   useEffect(() => {
     setText("Dashboard");
     document.title = "Gadget Haven || Dashboard";

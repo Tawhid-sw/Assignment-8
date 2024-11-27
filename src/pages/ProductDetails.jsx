@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   ProductDetail,
   TextContent,
@@ -12,13 +12,14 @@ import { FaRegHeart } from "react-icons/fa";
 const ProductDetails = () => {
   const { setText } = useContext(TextContent);
   const { productDetails } = useContext(ProductDetail);
-  const { AddItemToCart } = useContext(CartItem);
-  const { getItem } = useContext(Wishlists);
-
+  const { AddItemToCart, cartItem } = useContext(CartItem);
+  const { wishlistItem, getItem } = useContext(Wishlists);
+  const existItem = wishlistItem.find(
+    (item) => item.product_id == productDetails.product_id
+  );
   useEffect(() => {
     document.title = "Gadget Heaven || Product Details";
     setText("Product Details");
-    console.log(productDetails);
   }, []);
   return (
     <div className="flex items-center justify-center block w-full">
@@ -78,8 +79,14 @@ const ProductDetails = () => {
               Add to cart <MdOutlineShoppingCart />
             </button>
             <button
-              onClick={() => getItem(productDetails)}
-              className="p-2 text-lg border border-[#00000059] rounded-full transition-all active:scale-90 hover:bg-red-400 hover:text-white hover:border-white"
+              onClick={() => {
+                existItem ? alert("it has") : getItem(productDetails);
+              }}
+              className={`p-2 text-lg border rounded-full hover:bg-red-400 ${
+                existItem
+                  ? "bg-red-400 text-white border-transparent"
+                  : "bg-transparent text-black tr-drop border-[#00000059]"
+              } hover:text-white `}
             >
               <FaRegHeart />
             </button>
