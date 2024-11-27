@@ -3,7 +3,6 @@ import { HiOutlineAdjustments } from "react-icons/hi";
 import { CartItem } from "../contents/GlobalContext";
 import Payment from "./Payment";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartItem, removeItem, setCartItem } = useContext(CartItem);

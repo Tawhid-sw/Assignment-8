@@ -52,12 +52,12 @@ export const CartItems = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("cartItem", JSON.stringify(cartItem));
   }, [cartItem]);
+
   const AddItemToCart = (newItem) => {
     const ifItemExist = cartItem.find(
       (item) => item.product_id === newItem.product_id
     );
 
-    // Item add condition
     if (ifItemExist) {
       alert("Already added");
     } else if (!newItem.availability) {
@@ -66,17 +66,47 @@ export const CartItems = ({ children }) => {
       setCartItem([...cartItem, newItem]);
     }
   };
-  // Remove item
+
   const removeItem = (id) => {
     const UpdateList = cartItem.filter((item) => item.product_id !== id);
     setCartItem(UpdateList);
   };
+
   return (
     <CartItem.Provider
       value={{ cartItem, AddItemToCart, removeItem, setCartItem }}
     >
       {children}
     </CartItem.Provider>
+  );
+};
+
+export const Wishlists = createContext();
+export const WishlistItems = ({ children }) => {
+  const [wishlistItem, setWishlistItem] = useState(() => {
+    const saveItem = localStorage.getItem("Wishlist");
+    return saveItem ? JSON.parse(saveItem) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("Wishlist", JSON.stringify(wishlistItem));
+  }, [wishlistItem]);
+
+  const getItem = (newItem) => {
+    const ifItemExist = wishlistItem.find(
+      (item) => item.product_id === newItem.product_id
+    );
+    ifItemExist ? "Already added" : setWishlistItem([...wishlistItem, newItem]);
+  };
+
+  const removeItem = (id) => {
+    const UpdateList = wishlistItem.filter((item) => item.product_id !== id);
+    setWishlistItem(UpdateList);
+  };
+
+  return (
+    <Wishlists.Provider value={{ wishlistItem, getItem, removeItem }}>
+      {children}
+    </Wishlists.Provider>
   );
 };
 

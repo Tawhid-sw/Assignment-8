@@ -3,6 +3,7 @@ import {
   ProductDetail,
   TextContent,
   CartItem,
+  Wishlists,
 } from "../contents/GlobalContext";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -12,11 +13,13 @@ const ProductDetails = () => {
   const { setText } = useContext(TextContent);
   const { productDetails } = useContext(ProductDetail);
   const { AddItemToCart } = useContext(CartItem);
+  const { getItem } = useContext(Wishlists);
+
   useEffect(() => {
     document.title = "Gadget Heaven || Product Details";
     setText("Product Details");
+    console.log(productDetails);
   }, []);
-  console.log(productDetails);
   return (
     <div className="flex items-center justify-center block w-full">
       <div className="flex items-start gap-4 w-[70%] p-6 rounded-3xl bg-white -translate-y-44">
@@ -69,14 +72,15 @@ const ProductDetails = () => {
           </span>
           <div className="flex items-center gap-4 ">
             <button
-              onClick={() => {
-                AddItemToCart(productDetails);
-              }}
+              onClick={() => AddItemToCart(productDetails)}
               className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white transition-all rounded-3xl bg-prime hover:opacity-95 active:scale-90"
             >
               Add to cart <MdOutlineShoppingCart />
             </button>
-            <button className="p-2 text-lg border border-[#00000059] rounded-full transition-all active:scale-90 hover:bg-red-400 hover:text-white hover:border-white">
+            <button
+              onClick={() => getItem(productDetails)}
+              className="p-2 text-lg border border-[#00000059] rounded-full transition-all active:scale-90 hover:bg-red-400 hover:text-white hover:border-white"
+            >
               <FaRegHeart />
             </button>
           </div>
