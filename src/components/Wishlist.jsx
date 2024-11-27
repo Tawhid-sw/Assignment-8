@@ -37,7 +37,7 @@ const Wishlist = () => {
                   onClick={() => {
                     AddItemToCart(item);
                     {
-                      !newItem.availability && removeItem(item.product_id);
+                      item.availability && removeItem(item.product_id);
                     }
                   }}
                   className="gap-1 mt-2 px-2 py-1 text-[0.678rem] font-semibold text-white fx-row rounded-3xl bg-prime font-Quicksand tr-drop hover:opacity-85"
