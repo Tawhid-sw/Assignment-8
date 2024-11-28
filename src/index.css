@@ -31,3 +31,7 @@ nav {
 .tr-drop {
   @apply transition-all duration-200 active:scale-90;
 }
+
+.fr ul > li {
+  @apply text-lg font-medium text-gray-500 py-1 font-Quicksand;
+}

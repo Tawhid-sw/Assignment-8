@@ -9,7 +9,7 @@ const Sidenav = () => {
       {SideNavigation.map((nav, index) => {
         return (
           <li
-            key={nav.lable}
+            key={nav.lable + index}
             onClick={() => {
               setCategories(nav.category);
             }}
