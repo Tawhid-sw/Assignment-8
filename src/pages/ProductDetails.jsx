@@ -8,6 +8,7 @@ import {
 import { FaStar } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductDetails = () => {
   const { setText } = useContext(TextContent);
@@ -15,6 +16,9 @@ const ProductDetails = () => {
   const { AddItemToCart, cartItem } = useContext(CartItem);
   const { wishlistItem, getItem } = useContext(Wishlists);
   const existItem = wishlistItem.find(
+    (item) => item.product_id == productDetails.product_id
+  );
+  const IfexistItem = cartItem.find(
     (item) => item.product_id == productDetails.product_id
   );
   useEffect(() => {
@@ -73,14 +77,24 @@ const ProductDetails = () => {
           </span>
           <div className="flex items-center gap-4 ">
             <button
-              onClick={() => AddItemToCart(productDetails)}
+              onClick={() => {
+                if (IfexistItem) {
+                  toast.warning("Already added");
+                } else if (!productDetails.availability) {
+                  toast.error("Product is out of stock");
+                } else {
+                  AddItemToCart(productDetails);
+                }
+              }}
               className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white transition-all rounded-3xl bg-prime hover:opacity-95 active:scale-90"
             >
               Add to cart <MdOutlineShoppingCart />
             </button>
             <button
               onClick={() => {
-                existItem ? alert("it has") : getItem(productDetails);
+                existItem
+                  ? toast.error("Allready in wishlist")
+                  : getItem(productDetails);
               }}
               className={`p-2 text-lg border rounded-full hover:bg-red-400 ${
                 existItem
@@ -93,6 +107,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

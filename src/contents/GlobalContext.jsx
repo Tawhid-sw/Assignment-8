@@ -54,17 +54,7 @@ export const CartItems = ({ children }) => {
   }, [cartItem]);
 
   const AddItemToCart = (newItem) => {
-    const ifItemExist = cartItem.find(
-      (item) => item.product_id === newItem.product_id
-    );
-
-    if (ifItemExist) {
-      alert("Already added");
-    } else if (!newItem.availability) {
-      alert("Product is out of stock");
-    } else {
-      setCartItem([...cartItem, newItem]);
-    }
+    setCartItem([...cartItem, newItem]);
   };
 
   const removeItem = (id) => {
