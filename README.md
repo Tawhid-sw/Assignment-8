@@ -1,8 +1,17 @@
-# React + Vite
+#GadgetHaven
+An e-commerce platform for gadget lovers! Browse, filter, and purchase gadgets with ease. Manage your shopping cart and wishlist with real-time updates and seamless navigation.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## **Features**  
+- Wishlist: Save your favorite items for later.
+- Product Filtering: Filter gadgets by category.
+- Sort by Price: Sort items in descending order.
+- 404 Page: Friendly error page for invalid routes.
 
-Currently, two official plugins are available:
+## **Tech used in it :**
+- React (Vite)
+- Context API + LocalStorage
+- Tailwind CSS
+- React Router
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ** Live Link **
+- [@Netlify]([Netlify](https://gadgethavens.netlify.app))
