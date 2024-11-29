@@ -1,4 +1,5 @@
-## **GadgetHaven **
+# GadgetHaven
+
 An e-commerce platform for gadget lovers! Browse, filter, and purchase gadgets with ease. Manage your shopping cart and wishlist with real-time updates and seamless navigation.
 
 ## **Features**  
@@ -14,4 +15,4 @@ An e-commerce platform for gadget lovers! Browse, filter, and purchase gadgets w
 - React Router
 
 ## ** Live Link **
-- **Live Demo**: [Netlify/GadgetHaven](https://gadgethavens.netlify.app/)  
+- Live Demo: [Netlify/GadgetHaven](https://gadgethavens.netlify.app/)  
