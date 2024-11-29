@@ -84,6 +84,7 @@ const ProductDetails = () => {
                   toast.error("Product is out of stock");
                 } else {
                   AddItemToCart(productDetails);
+                  toast.success("Product added to cart");
                 }
               }}
               className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-white transition-all rounded-3xl bg-prime hover:opacity-95 active:scale-90"
@@ -94,7 +95,8 @@ const ProductDetails = () => {
               onClick={() => {
                 existItem
                   ? toast.error("Allready in wishlist")
-                  : getItem(productDetails);
+                  : (getItem(productDetails),
+                    toast.success("Product added to wishlist"));
               }}
               className={`p-2 text-lg border rounded-full hover:bg-red-400 ${
                 existItem

@@ -3,6 +3,7 @@ import { HiOutlineAdjustments } from "react-icons/hi";
 import { CartItem } from "../contents/GlobalContext";
 import Payment from "./Payment";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cart = () => {
   const { cartItem, removeItem, setCartItem } = useContext(CartItem);
@@ -69,7 +70,10 @@ const Cart = () => {
                 </p>
               </div>
               <button
-                onClick={() => removeItem(product.product_id)}
+                onClick={() => {
+                  removeItem(product.product_id);
+                  toast.warning("Item removed");
+                }}
                 className="absolute text-3xl transition-opacity right-8 hover:opacity-70"
               >
                 <IoIosCloseCircleOutline color="#cb963a" />
@@ -79,6 +83,7 @@ const Cart = () => {
         })}
       </div>
       {payment && <Payment price={totalPrice} />}
+      <ToastContainer position="top-right" />
     </>
   );
 };
