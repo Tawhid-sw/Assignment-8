@@ -14,5 +14,5 @@ An e-commerce platform for gadget lovers! Browse, filter, and purchase gadgets w
 - Tailwind CSS
 - React Router
 
-## ** Live Link **
+## **Live Link**
 - Live Demo: [Netlify/GadgetHaven](https://gadgethavens.netlify.app/)  
